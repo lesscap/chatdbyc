@@ -43,7 +43,7 @@ process.on('SIGINT', () => {
 
 const start = async () => {
   try {
-    const port = +(process.env.PORT ?? '4000')
+    const port = +(process.env.PORT ?? '8080')
     await app.listen({ port, host: '0.0.0.0' })
     global.console.log(`server listening on ${port}`)
   } catch (e) {

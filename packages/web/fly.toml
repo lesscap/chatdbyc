@@ -1,4 +1,4 @@
-# fly.toml file generated for chatdbyc on 2023-04-01T18:00:58+08:00
+# fly.toml file generated for chatdbyc on 2023-04-01T19:25:50+08:00
 
 app = "chatdbyc"
 kill_signal = "SIGINT"
