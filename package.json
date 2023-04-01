@@ -1,0 +1,10 @@
+{
+  "name": "chatdbyc",
+  "version": "1.0.0",
+  "private": true,
+  "description": "chat.dbyc.io",
+  "scripts": {
+  },
+  "keywords": [],
+  "license": "ISC"
+}

@@ -1,0 +1,26 @@
+{
+  "name": "chatdbyc-web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon src/app.ts"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.22",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.3"
+  },
+  "dependencies": {
+    "@fastify/cookie": "^8.3.0",
+    "@fastify/cors": "^8.2.1",
+    "@fastify/session": "^10.2.0",
+    "dotenv": "^16.0.3",
+    "fastify": "^4.15.0",
+    "fastify-file-upload": "^4.0.0",
+    "fastify-qs": "^4.0.1",
+    "got": "^12.6.0",
+    "nanoid": "^4.0.2",
+    "ramda": "^0.28.0"
+  }
+}
