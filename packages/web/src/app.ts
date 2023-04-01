@@ -1,10 +1,9 @@
-import 'dotenv/config'
-
 import fastify from 'fastify'
 import fastifyCookie from '@fastify/cookie'
 import fastifySession from '@fastify/session'
 import fastifyQs from 'fastify-qs'
 import fileUpload from 'fastify-file-upload'
+import { config } from './config/app'
 import { Router } from './router'
 
 const app = fastify({
@@ -42,6 +41,7 @@ process.on('SIGINT', () => {
 })
 
 const start = async () => {
+  global.console.debug('config:\n', config)
   try {
     const port = +(process.env.PORT ?? '4000')
     await app.listen({ port, host: '0.0.0.0' })

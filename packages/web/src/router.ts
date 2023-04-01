@@ -1,8 +1,10 @@
 import type { FastifyPluginCallback } from 'fastify'
 import { PageController } from './controllers/page'
+import { ChatController } from './controllers/chat'
 
 const controllers = {
   '/api/page': PageController,
+  '/api/chat': ChatController,
 }
 
 export const Router: FastifyPluginCallback = (app, _options, done) => {

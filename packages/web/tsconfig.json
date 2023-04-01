@@ -3,8 +3,9 @@
     "strictNullChecks": true,
     "skipLibCheck": true,
     "lib": ["es2020"],
-    "module": "commonjs",
+    "module": "nodenext",
     "target": "es2020",
+    "sourceMap": true,
     "outDir": "dist"
   },
   "include": ["src"]
