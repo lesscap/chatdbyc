@@ -1,6 +1,7 @@
 import fastify from 'fastify'
 import fastifyCookie from '@fastify/cookie'
 import fastifySession from '@fastify/session'
+import fastifyStatic from '@fastify/static'
 import fastifyQs from 'fastify-qs'
 import fileUpload from 'fastify-file-upload'
 import { config } from './config/app'
@@ -12,13 +13,17 @@ const app = fastify({
   }
 })
 
+app.register(fastifyStatic, {
+  root: config.staticRoot,
+})
+
 app.register(fileUpload, {
   limits: { fileSize: 10 * 1024 * 1024 }
 })
 
 app.register(fastifyCookie)
 app.register(fastifySession, {
-  secret: 'YV-OwxHoE-A4IpZ-JvpziuXfQNk0tY02A1UlNm3OwMk9BICSPzmgODxa9nuUBeh8',
+  secret: config.session.secret,
   cookie: {
     secure: false
   }
@@ -26,8 +31,8 @@ app.register(fastifySession, {
 
 app.register(fastifyQs, {})
 
-app.get('/', () => {
-  return 'ok!'
+app.get('/', (_req: unknown, replay: any) => {
+  replay.sendFile('index.html')
 })
 
 app.register(Router)
