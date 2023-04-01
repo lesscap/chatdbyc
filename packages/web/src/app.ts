@@ -26,6 +26,11 @@ app.register(fastifySession, {
 })
 
 app.register(fastifyQs, {})
+
+app.get('/', () => {
+  return 'ok!'
+})
+
 app.register(Router)
 
 process.on('SIGINT', () => {
@@ -38,9 +43,8 @@ process.on('SIGINT', () => {
 
 const start = async () => {
   try {
-    await app.listen({ port: 4000, host: '0.0.0.0' })
-    const address = app.server.address()
-    const port = typeof address === 'string' ? address : address?.port
+    const port = +(process.env.PORT ?? '4000')
+    await app.listen({ port, host: '0.0.0.0' })
     global.console.log(`server listening on ${port}`)
   } catch (e) {
     app.log.error(e)
