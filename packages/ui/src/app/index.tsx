@@ -75,7 +75,7 @@ export const App = () => {
   return (
     <div className={style.app}>
       <div className="container is-fluid">
-        <h2 className="title">Chat completions</h2>
+        <h2 className="title">chat completions</h2>
         <div className={cx(style.messages, 'block')}>
           <Messages dataSource={messages} onChange={setMessages} />
           {loading && <button className="button is-loading">loading...</button>}
