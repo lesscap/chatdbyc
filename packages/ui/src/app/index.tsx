@@ -77,7 +77,7 @@ export const App = () => {
       <div className="container is-fluid">
         <h2 className="title">Chat completions</h2>
         <div className={cx(style.messages, 'block')}>
-          <Messages dataSource={messages} />
+          <Messages dataSource={messages} onChange={setMessages} />
           {loading && <button className="button is-loading">loading...</button>}
         </div>
         <div className="block">
@@ -117,18 +117,27 @@ export const App = () => {
 
 type MessagesProps = {
   dataSource: Message[]
+  onChange: (next: Message[]) => void
 }
 
-const Messages = ({ dataSource }: MessagesProps) => {
+const Messages = ({ dataSource, onChange }: MessagesProps) => {
+  const handleRemove = (index: number) => () => {
+    const next = dataSource.slice()
+    next.splice(index, 1)
+    onChange(next)
+  }
+
   return (
     <div className={style.messages}>
-      {dataSource.map(message => (
+      {dataSource.map((message, index) => (
         <div
+          key={index}
           className={cx(style.message, 'notification is-light', {
             'is-info': message.type === 'request',
           })}
         >
-          {message.content}
+          <button className="delete is-small" onClick={handleRemove(index)}></button>
+          <div className={style.body}>{message.content}</div>
         </div>
       ))}
     </div>
